@@ -2,12 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply bg-navy-950 font-sans text-navy-900 antialiased;
+  }
+  h1, h2, h3 {
+    @apply font-display tracking-tight;
+  }
+  h2 { @apply text-navy-900; }
+  input[type="radio"], input[type="checkbox"] {
+    accent-color: #ff7a1a;
+  }
+  input:focus, select:focus, textarea:focus {
+    @apply outline-none ring-2 ring-ember-400 border-ember-400;
+  }
+}
+
+.brand-backdrop {
+  background-color: #050d1c;
+  background-image:
+    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(255, 122, 26, 0.10), transparent 70%),
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 100% 100%, 48px 48px, 48px 48px;
+}
+
 @media print {
   body {
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;
+    background: #fff !important;
   }
-  
+  .brand-backdrop {
+    background: #fff !important;
+    padding: 0 !important;
+  }
   .no-print {
     display: none !important;
   }

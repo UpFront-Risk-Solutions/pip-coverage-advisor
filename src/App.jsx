@@ -34,7 +34,7 @@ const Tooltip = ({ content, children }) => {
   const [show, setShow] = useState(false);
   return (
     <span className="relative inline-block">
-      <span className="inline-flex items-center cursor-help text-blue-600" onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false)}>
+      <span className="inline-flex items-center cursor-help text-navy-700" onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false)}>
         {children}
         <HelpCircle className="w-4 h-4 ml-1" />
       </span>
@@ -51,9 +51,9 @@ const Tooltip = ({ content, children }) => {
 const WarningBox = ({ type = "warning", title, children }) => {
   const styles = {
     warning: { bg: "bg-amber-50", border: "border-amber-400", icon: <AlertTriangle className="w-5 h-5 text-amber-600" /> },
-    info: { bg: "bg-blue-50", border: "border-blue-400", icon: <Info className="w-5 h-5 text-blue-600" /> },
+    info: { bg: "bg-navy-50", border: "border-navy-400", icon: <Info className="w-5 h-5 text-navy-700" /> },
     danger: { bg: "bg-red-50", border: "border-red-400", icon: <XCircle className="w-5 h-5 text-red-600" /> },
-    success: { bg: "bg-green-50", border: "border-green-400", icon: <CheckCircle className="w-5 h-5 text-green-600" /> }
+    success: { bg: "bg-teal-50", border: "border-teal-400", icon: <CheckCircle className="w-5 h-5 text-teal-600" /> }
   };
   const s = styles[type];
   return (
@@ -75,12 +75,12 @@ const StepIndicator = ({ currentStep, steps }) => (
       <React.Fragment key={idx}>
         <div className="flex flex-col items-center min-w-fit">
           <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold
-            ${idx < currentStep ? 'bg-green-500 text-white' : idx === currentStep ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-500'}`}>
+            ${idx < currentStep ? 'bg-teal-500 text-white' : idx === currentStep ? 'bg-ember-500 text-navy-950 ring-4 ring-ember-100' : 'bg-gray-200 text-gray-500'}`}>
             {idx < currentStep ? '✓' : idx + 1}
           </div>
-          <span className={`text-xs mt-1 text-center max-w-20 ${idx === currentStep ? 'font-semibold text-blue-600' : 'text-gray-500'}`}>{step}</span>
+          <span className={`text-xs mt-1 text-center max-w-20 ${idx === currentStep ? 'font-semibold text-navy-900' : 'text-gray-500'}`}>{step}</span>
         </div>
-        {idx < steps.length - 1 && <div className={`flex-1 h-1 mx-1 min-w-4 ${idx < currentStep ? 'bg-green-500' : 'bg-gray-200'}`} />}
+        {idx < steps.length - 1 && <div className={`flex-1 h-1 mx-1 min-w-4 ${idx < currentStep ? 'bg-teal-500' : 'bg-gray-200'}`} />}
       </React.Fragment>
     ))}
   </div>
@@ -90,7 +90,7 @@ const RadioGroup = ({ name, value, onChange, options }) => (
   <div className="space-y-2">
     {options.map(opt => (
       <label key={opt.value} className={`flex items-start p-3 rounded-lg border-2 cursor-pointer transition-all
-        ${value === opt.value ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-gray-300'}`}>
+        ${value === opt.value ? 'border-ember-500 bg-ember-50' : 'border-gray-200 hover:border-gray-300'}`}>
         <input type="radio" name={name} value={opt.value} checked={value === opt.value} onChange={() => onChange(opt.value)} className="mt-1 mr-3" />
         <div>
           <div className="font-medium">{opt.label}</div>
@@ -140,12 +140,12 @@ const MedicareInterstitial = ({ onContinue, onGoBack }) => (
       <p className="text-amber-900">A 68-year-old with Medicare opts out of PIP. They're seriously injured in an auto accident, requiring 6 months of rehabilitation, daily attendant care, and home modifications.</p>
       <div className="mt-4 grid md:grid-cols-2 gap-4">
         <div className="bg-white p-4 rounded-lg">
-          <div className="font-semibold text-green-700 mb-2">With Unlimited PIP:</div>
+          <div className="font-semibold text-teal-700 mb-2">With Unlimited PIP:</div>
           <ul className="text-sm space-y-1 text-gray-700">
             <li>✓ All medical expenses covered</li>
             <li>✓ Attendant care: $50,000+/year covered</li>
             <li>✓ Home modifications: $30,000 covered</li>
-            <li className="font-semibold text-green-700">Out of pocket: Minimal</li>
+            <li className="font-semibold text-teal-700">Out of pocket: Minimal</li>
           </ul>
         </div>
         <div className="bg-white p-4 rounded-lg">
@@ -160,14 +160,14 @@ const MedicareInterstitial = ({ onContinue, onGoBack }) => (
       </div>
     </div>
 
-    <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-6">
-      <h3 className="font-bold text-blue-800 mb-2">The Premium Savings vs. Risk Question:</h3>
-      <p className="text-blue-900 text-sm">Opting out saves a few hundred dollars per year. A single serious accident could cost tens or hundreds of thousands in uncovered expenses. This is not about agent commission—it's about protection from catastrophic financial loss.</p>
+    <div className="bg-navy-50 border-2 border-navy-200 rounded-xl p-6">
+      <h3 className="font-bold text-navy-800 mb-2">The Premium Savings vs. Risk Question:</h3>
+      <p className="text-navy-900 text-sm">Opting out saves a few hundred dollars per year. A single serious accident could cost tens or hundreds of thousands in uncovered expenses. This is not about agent commission—it's about protection from catastrophic financial loss.</p>
     </div>
 
     <div className="flex justify-between pt-4">
       <button onClick={onGoBack} className="px-6 py-3 bg-gray-200 rounded-lg hover:bg-gray-300">← Go Back</button>
-      <button onClick={onContinue} className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">I Understand, Continue →</button>
+      <button onClick={onContinue} className="px-6 py-3 bg-ember-500 text-navy-950 font-semibold rounded-lg hover:bg-ember-600 transition-colors">I Understand, Continue →</button>
     </div>
   </div>
 );
@@ -334,7 +334,7 @@ export default function App() {
         return (
           <div className="space-y-6">
             <div className="flex items-center gap-2 mb-4">
-              <Shield className="w-6 h-6 text-blue-600" />
+              <Shield className="w-6 h-6 text-navy-700" />
               <h2 className="text-xl font-bold">Named Insured Information</h2>
             </div>
             
@@ -447,7 +447,7 @@ export default function App() {
         return (
           <div className="space-y-6">
             <div className="flex items-center gap-2 mb-4">
-              <Users className="w-6 h-6 text-blue-600" />
+              <Users className="w-6 h-6 text-navy-700" />
               <h2 className="text-xl font-bold">Household Members</h2>
             </div>
             
@@ -479,7 +479,7 @@ export default function App() {
                   <div className="flex items-center justify-between">
                     <h3 className="font-semibold">Household Members</h3>
                     <button onClick={addHouseholdMember}
-                      className="flex items-center gap-1 px-3 py-1 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 text-sm">
+                      className="flex items-center gap-1 px-3 py-1 bg-navy-100 text-navy-800 rounded-lg hover:bg-navy-200 text-sm">
                       <Plus className="w-4 h-4" /> Add Member
                     </button>
                   </div>
@@ -521,7 +521,7 @@ export default function App() {
                 </div>
 
                 {householdMembers.length > 0 && (
-                  <div className="bg-blue-50 p-4 rounded-lg">
+                  <div className="bg-navy-50 p-4 rounded-lg">
                     <label className="block font-medium mb-2">
                       Do ALL household members have the same health coverage as {namedInsured.name || 'the named insured'}?
                     </label>
@@ -589,7 +589,7 @@ export default function App() {
         return (
           <div className="space-y-6">
             <div className="flex items-center gap-2 mb-4">
-              <ClipboardList className="w-6 h-6 text-blue-600" />
+              <ClipboardList className="w-6 h-6 text-navy-700" />
               <h2 className="text-xl font-bold">Eligible PIP Options</h2>
             </div>
 
@@ -602,19 +602,19 @@ export default function App() {
                 const n = parseInt(num);
                 const isEligible = eligible[n];
                 return (
-                  <div key={num} className={`p-4 rounded-lg border-2 ${isEligible ? 'border-green-300 bg-green-50' : 'border-gray-200 bg-gray-50'}`}>
+                  <div key={num} className={`p-4 rounded-lg border-2 ${isEligible ? 'border-teal-300 bg-teal-50' : 'border-gray-200 bg-gray-50'}`}>
                     <div className="flex items-start gap-3">
-                      {isEligible ? <CheckCircle className="w-5 h-5 text-green-600 mt-0.5" /> : <XCircle className="w-5 h-5 text-gray-400 mt-0.5" />}
+                      {isEligible ? <CheckCircle className="w-5 h-5 text-teal-600 mt-0.5" /> : <XCircle className="w-5 h-5 text-gray-400 mt-0.5" />}
                       <div className="flex-1">
                         <div className="flex justify-between items-start">
-                          <span className={`font-semibold ${isEligible ? 'text-green-800' : 'text-gray-500'}`}>Option {num}: {opt.limit}</span>
-                          <span className={`text-xs px-2 py-0.5 rounded ${isEligible ? 'bg-green-200 text-green-800' : 'bg-gray-200 text-gray-600'}`}>
+                          <span className={`font-semibold ${isEligible ? 'text-teal-800' : 'text-gray-500'}`}>Option {num}: {opt.limit}</span>
+                          <span className={`text-xs px-2 py-0.5 rounded ${isEligible ? 'bg-teal-200 text-teal-800' : 'bg-gray-200 text-gray-600'}`}>
                             {isEligible ? 'ELIGIBLE' : 'NOT ELIGIBLE'}
                           </span>
                         </div>
-                        <p className={`text-sm ${isEligible ? 'text-green-700' : 'text-gray-500'}`}>{opt.description}</p>
+                        <p className={`text-sm ${isEligible ? 'text-teal-700' : 'text-gray-500'}`}>{opt.description}</p>
                         {reasons[n].length > 0 && (
-                          <div className={`mt-2 text-xs ${isEligible ? 'text-green-600' : 'text-gray-500'}`}>
+                          <div className={`mt-2 text-xs ${isEligible ? 'text-teal-600' : 'text-gray-500'}`}>
                             {reasons[n].map((r, i) => <div key={i}>• {r}</div>)}
                           </div>
                         )}
@@ -635,7 +635,7 @@ export default function App() {
         return (
           <div className="space-y-6">
             <div className="flex items-center gap-2 mb-4">
-              <Shield className="w-6 h-6 text-blue-600" />
+              <Shield className="w-6 h-6 text-navy-700" />
               <h2 className="text-xl font-bold">Select PIP Coverage</h2>
             </div>
 
@@ -646,15 +646,15 @@ export default function App() {
                 const n = parseInt(num);
                 return (
                   <label key={num} className={`block p-4 rounded-lg border-2 cursor-pointer transition-all
-                    ${selectedOption === n ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-gray-300'}`}>
+                    ${selectedOption === n ? 'border-ember-500 bg-ember-50' : 'border-gray-200 hover:border-gray-300'}`}>
                     <div className="flex items-start gap-3">
                       <input type="radio" name="pipOption" checked={selectedOption === n} onChange={() => setSelectedOption(n)} className="mt-1" />
                       <div className="flex-1">
                         <div className="font-bold">Option {num}: {opt.limit}</div>
                         <div className="text-sm text-gray-600">{opt.description}</div>
                         
-                        {n === 1 && <div className="text-sm bg-green-100 p-2 rounded mt-2"><strong>Maximum protection.</strong> No risk of exhausting coverage.</div>}
-                        {n === 2 && <div className="text-sm bg-blue-100 p-2 rounded mt-2"><strong>Consider:</strong> $500K can be exhausted in severe cases.</div>}
+                        {n === 1 && <div className="text-sm bg-teal-100 p-2 rounded mt-2"><strong>Maximum protection.</strong> No risk of exhausting coverage.</div>}
+                        {n === 2 && <div className="text-sm bg-navy-100 p-2 rounded mt-2"><strong>Consider:</strong> $500K can be exhausted in severe cases.</div>}
                         {n === 3 && <div className="text-sm bg-amber-100 p-2 rounded mt-2"><strong>Consider:</strong> Attendant care alone can cost $50K-$100K+/year.</div>}
                         {n === 4 && <div className="text-sm bg-red-100 p-2 rounded mt-2"><strong>⚠️ EXCLUSION:</strong> Excluded persons have ZERO PIP medical coverage.</div>}
                         {n === 5 && <div className="text-sm bg-amber-100 p-2 rounded mt-2"><strong>⚠️ MEDICAID:</strong> $50K is the lowest limit. Gap risk if eligibility ends.</div>}
@@ -720,10 +720,10 @@ export default function App() {
           <div className="space-y-6">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
-                <FileText className="w-6 h-6 text-blue-600" />
+                <FileText className="w-6 h-6 text-navy-700" />
                 <h2 className="text-xl font-bold">PIP Coverage Summary</h2>
               </div>
-              <button onClick={() => window.print()} className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-sm no-print">
+              <button onClick={() => window.print()} className="flex items-center gap-2 px-4 py-2 bg-ember-500 text-navy-950 font-semibold rounded-lg hover:bg-ember-600 transition-colors text-sm no-print">
                 <Printer className="w-4 h-4" /> Print Summary
               </button>
             </div>
@@ -778,14 +778,14 @@ export default function App() {
                   const isEligible = elig[n];
                   const isSelected = selectedOption === n;
                   return (
-                    <div key={num} className={`p-3 rounded-lg border-2 ${isSelected ? 'border-blue-500 bg-blue-50' : isEligible ? 'border-green-200 bg-green-50' : 'border-gray-200 bg-gray-50 opacity-60'}`}>
+                    <div key={num} className={`p-3 rounded-lg border-2 ${isSelected ? 'border-ember-500 bg-ember-50' : isEligible ? 'border-teal-200 bg-teal-50' : 'border-gray-200 bg-gray-50 opacity-60'}`}>
                       <div className="flex items-center gap-2">
-                        {isSelected ? <CheckCircle className="w-5 h-5 text-blue-600" /> : isEligible ? <CheckCircle className="w-5 h-5 text-green-500" /> : <XCircle className="w-5 h-5 text-gray-400" />}
-                        <span className={`font-semibold ${isSelected ? 'text-blue-800' : isEligible ? 'text-green-800' : 'text-gray-500'}`}>
+                        {isSelected ? <CheckCircle className="w-5 h-5 text-ember-600" /> : isEligible ? <CheckCircle className="w-5 h-5 text-teal-500" /> : <XCircle className="w-5 h-5 text-gray-400" />}
+                        <span className={`font-semibold ${isSelected ? 'text-navy-900' : isEligible ? 'text-teal-800' : 'text-gray-500'}`}>
                           Option {num}: {opt.limit}
                         </span>
-                        {isSelected && <span className="ml-auto text-xs bg-blue-600 text-white px-2 py-1 rounded">SELECTED</span>}
-                        {!isSelected && isEligible && <span className="ml-auto text-xs bg-green-200 text-green-800 px-2 py-1 rounded">ELIGIBLE</span>}
+                        {isSelected && <span className="ml-auto text-xs bg-ember-500 text-navy-950 font-semibold px-2 py-1 rounded">SELECTED</span>}
+                        {!isSelected && isEligible && <span className="ml-auto text-xs bg-teal-200 text-teal-800 px-2 py-1 rounded">ELIGIBLE</span>}
                       </div>
                       <p className="text-sm text-gray-600 ml-7">{opt.description}</p>
                       {rsns[n].length > 0 && (
@@ -800,8 +800,8 @@ export default function App() {
             </div>
 
             {selectedOption && (
-              <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-4">
-                <h3 className="font-bold text-lg mb-3 text-blue-800">Selected: Option {selectedOption} - {PIP_OPTIONS[selectedOption].limit}</h3>
+              <div className="bg-navy-50 border-2 border-navy-200 rounded-lg p-4">
+                <h3 className="font-bold text-lg mb-3 text-navy-800">Selected: Option {selectedOption} - {PIP_OPTIONS[selectedOption].limit}</h3>
                 
                 {selectedOption === 4 && excludedPersons.length > 0 && (
                   <div className="mb-4">
@@ -838,7 +838,7 @@ export default function App() {
               )}
 
               {docs.length === 0 ? (
-                <div className="flex items-center gap-2 text-green-700 bg-green-50 p-3 rounded">
+                <div className="flex items-center gap-2 text-teal-700 bg-teal-50 p-3 rounded">
                   <CheckCircle className="w-5 h-5" />
                   <span>No special documentation required for this option.</span>
                 </div>
@@ -909,14 +909,26 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4">
+    <div className="min-h-screen brand-backdrop px-4 pb-8">
+      <nav className="max-w-4xl mx-auto flex items-center justify-between py-5 no-print">
+        <a href="https://upfrontrisk.io" className="flex items-center gap-3" aria-label="UpFront Risk Solutions home">
+          <span className="w-9 h-9 rounded-lg bg-gradient-to-br from-ember-400 to-ember-600 flex items-center justify-center font-display font-bold text-white text-lg shadow-lg shadow-ember-500/20">U</span>
+          <span className="leading-tight">
+            <span className="block font-display font-bold text-white text-lg">UpFront Risk</span>
+            <span className="block text-[10px] tracking-[0.25em] text-ember-400 font-semibold">SOLUTIONS</span>
+          </span>
+        </a>
+        <a href="https://upfrontrisk.io" className="text-sm text-navy-200 hover:text-white transition-colors">upfrontrisk.io →</a>
+      </nav>
+
       <div className="max-w-4xl mx-auto">
-        <div className="bg-blue-900 text-white p-4 rounded-t-xl">
-          <h1 className="text-xl font-bold">Michigan PIP Coverage Advisor</h1>
-          <p className="text-blue-200 text-sm">Personal Injury Protection Eligibility & Selection Tool</p>
+        <div className="bg-navy-900 text-white px-6 py-5 rounded-t-xl border-b-4 border-ember-500">
+          <div className="text-[11px] tracking-[0.2em] font-semibold text-ember-400 mb-1">MICHIGAN NO-FAULT · PIP SELECTION</div>
+          <h1 className="text-3xl font-bold text-white">Michigan PIP Coverage Advisor</h1>
+          <p className="text-navy-200 text-sm mt-1">Personal Injury Protection Eligibility & Selection Tool</p>
         </div>
         
-        <div className="bg-white rounded-b-xl shadow-lg p-6">
+        <div className="bg-white rounded-b-xl shadow-2xl shadow-black/40 p-6">
           {!showMedicareInterstitial && <StepIndicator currentStep={step} steps={steps} />}
           
           {renderStep()}
@@ -924,18 +936,18 @@ export default function App() {
           {!showMedicareInterstitial && (
             <div className="flex justify-between mt-8 pt-4 border-t no-print">
               <button onClick={() => setStep(Math.max(0, step - 1))} disabled={step === 0}
-                className={`px-6 py-2 rounded-lg ${step === 0 ? 'bg-gray-200 text-gray-400' : 'bg-gray-200 hover:bg-gray-300'}`}>
+                className={`px-6 py-2 rounded-lg ${step === 0 ? 'bg-gray-100 text-gray-400' : 'bg-navy-50 text-navy-800 hover:bg-navy-100 transition-colors'}`}>
                 ← Back
               </button>
               
               {step < 4 ? (
                 <button onClick={handleNextStep} disabled={!canAdvance()}
-                  className={`px-6 py-2 rounded-lg ${canAdvance() ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-gray-200 text-gray-400'}`}>
+                  className={`px-6 py-2 rounded-lg ${canAdvance() ? 'bg-ember-500 text-navy-950 font-semibold hover:bg-ember-600 transition-colors' : 'bg-gray-200 text-gray-400'}`}>
                   Continue →
                 </button>
               ) : (
                 <button onClick={() => { setStep(0); setSelectedOption(null); setExcludedPersons([]); }}
-                  className="px-6 py-2 rounded-lg bg-gray-600 text-white hover:bg-gray-700">
+                  className="px-6 py-2 rounded-lg bg-navy-800 text-white hover:bg-navy-900 transition-colors">
                   Start Over
                 </button>
               )}
@@ -943,9 +955,14 @@ export default function App() {
           )}
         </div>
 
-        <div className="mt-4 text-center text-xs text-gray-500 no-print">
-          Based on Michigan DIFS regulations • For professional use • Not insurance or legal advice
-        </div>
+        <footer className="mt-6 text-center text-xs text-navy-300 space-y-1">
+          <div>Based on Michigan DIFS regulations • For professional use • Not insurance or legal advice</div>
+          <div>
+            A rules-based tool from <a href="https://upfrontrisk.io" className="text-ember-400 hover:text-ember-300 font-semibold">UpFront Risk Solutions</a>
+            {' '}• Your answers stay in your browser and are never stored or used for marketing.
+          </div>
+          <div className="text-navy-400">© {new Date().getFullYear()} UpFront Risk Solutions, LLC</div>
+        </footer>
       </div>
     </div>
   );

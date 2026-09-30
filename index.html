@@ -10,6 +10,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <title>Michigan PIP Coverage Advisor | UpFront Risk Solutions</title>
+    <script>
+      // The PIP Advisor lives inside the UpFront Producer Dashboard (one login for the Writr suite).
+      // Direct visits to the production hosts are sent there; local dev and previews are left alone.
+      (function () {
+        var prod = ['pip.upfrontrisk.io', 'pip-advisor.vercel.app'];
+        if (window.top === window.self && prod.indexOf(location.hostname) !== -1) {
+          location.replace('https://app.upfrontrisk.io/tools/pip-advisor');
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
